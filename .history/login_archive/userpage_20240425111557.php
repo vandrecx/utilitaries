@@ -4,7 +4,7 @@ require_once 'Conn.php';
 
 session_start();
 
-if (!isset($_SESSION['ID']) || $_SESSION['Cargo'] !== "Admin") {
+if (!isset($_SESSION['ID']) && ($_SESSION['Cargo'] == "Admin")) {
     header("Location: index.php");
     exit();
 }else{
@@ -21,7 +21,7 @@ if (!isset($_SESSION['ID']) || $_SESSION['Cargo'] !== "Admin") {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <title>Página do Administrador</title>
+    <title>Página do Usuário</title>
 </head>
 <body>
     <ul class="nav justify-content-end">

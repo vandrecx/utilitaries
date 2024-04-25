@@ -20,23 +20,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $check_office = $check_password . "AND b_isadmin_user = 0";
             $result_office = $conn->query($check_office);
 
-            $session_care = $result_password->fetch_assoc();
+            $session_care = $result_office->fetch_assoc();
 
             if($result_office->num_rows>0){
 
                 $_SESSION['ID'] = $session_care['i_id_user'];
                 $_SESSION['Email'] = $session_care['s_email_user'];
                 $_SESSION['Name'] = $session_care['s_name_user'];
-                $_SESSION['Cargo'] = "User";
                 header("Location: userpage.php");
                 exit();
 
             }else{
-
                 $_SESSION['ID'] = $session_care['i_id_user'];
                 $_SESSION['Email'] = $session_care['s_email_user'];
                 $_SESSION['Name'] = $session_care['s_name_user'];
-                $_SESSION['Cargo'] = "Admin";
                 header("Location: adminpage.php");
                 exit();
             }    

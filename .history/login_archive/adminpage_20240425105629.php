@@ -4,7 +4,7 @@ require_once 'Conn.php';
 
 session_start();
 
-if (!isset($_SESSION['ID']) || $_SESSION['Cargo'] !== "Admin") {
+if (!isset($_SESSION['ID'])) {
     header("Location: index.php");
     exit();
 }else{
@@ -24,14 +24,6 @@ if (!isset($_SESSION['ID']) || $_SESSION['Cargo'] !== "Admin") {
     <title>Página do Administrador</title>
 </head>
 <body>
-    <ul class="nav justify-content-end">
-        <li class="nav-item">
-            <a class="nav-link disabled" aria-current="page" ><?php echo "$user_name"?></a>
-        </li>
-        <li class="nav-item">
-            <a href="LogOut.php" class="btn btn-primary">Logout</a>
-        </li>
-    </ul>
     <div class='card' style='width: 30%; justify-content: center; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);'>
         <div class="card-header">
             Selecione o arquivo para envio

@@ -4,7 +4,7 @@ require_once 'Conn.php';
 
 session_start();
 
-if (!isset($_SESSION['ID']) || $_SESSION['Cargo'] !== "Admin") {
+if (!isset($_SESSION['ID']) && $_SESSION['Cargo'] == "User") {
     header("Location: index.php");
     exit();
 }else{
