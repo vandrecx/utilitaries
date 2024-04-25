@@ -1,21 +1,4 @@
-<?php 
-
-require_once 'Conn.php';
-
-function hideEmail(){
-
-    session_start();
-    
-    $email = $_SESSION['pass_repair'];
-    $encript_email = substr($email, 0, 5);
-    $result_email = $encript_email . str_repeat("*", strlen($email) - 5);
-
-    session_destroy();
-
-    return $result_email;
-}
-
-?>
+<?php require_once 'Conn.php'; ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -55,13 +38,6 @@ function hideEmail(){
                     <br>
                     <div class="alert alert-danger" role="alert">
                         Senha incorreta!
-                    </div>
-                <?php }else if(isset($_GET['validation']) && $_GET['validation'] == '2'){ ?>
-                    <br>
-                    <div class="alert alert-success" role="alert">
-                        <h4 class="alert-heading">Senha alterada com sucesso!</h4>
-                        <hr>
-                        <p class="mb-0">Uma nova senha foi enviada para o e-mail <strong><?php echo hideEmail(); ?></strong></p>
                     </div>
                 <?php } ?>
         </div>

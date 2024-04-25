@@ -1,21 +1,4 @@
-<?php 
-
-require_once 'Conn.php';
-
-function hideEmail(){
-
-    session_start();
-    
-    $email = $_SESSION['pass_repair'];
-    $encript_email = substr($email, 0, 5);
-    $result_email = $encript_email . str_repeat("*", strlen($email) - 5);
-
-    session_destroy();
-
-    return $result_email;
-}
-
-?>
+<?php require_once 'Conn.php'; ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -42,7 +25,7 @@ function hideEmail(){
                     <input type="password" class="form-control" id="exampleInputPassword1" name="password">
                 </div>
                 <div class="mb-3">
-                    <a href="recupera_senha.php">Esqueceu a senha?</a>
+                    <a href="ForgotPassword.php">Esqueceu a senha?</a>
                 </div>
                 <button type="submit" class="btn btn-primary" name="submit">Continue</button>
             </form>
@@ -56,15 +39,21 @@ function hideEmail(){
                     <div class="alert alert-danger" role="alert">
                         Senha incorreta!
                     </div>
-                <?php }else if(isset($_GET['validation']) && $_GET['validation'] == '2'){ ?>
-                    <br>
-                    <div class="alert alert-success" role="alert">
-                        <h4 class="alert-heading">Senha alterada com sucesso!</h4>
-                        <hr>
-                        <p class="mb-0">Uma nova senha foi enviada para o e-mail <strong><?php echo hideEmail(); ?></strong></p>
-                    </div>
                 <?php } ?>
         </div>
     </div>
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+  <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-header">
+      <img src="..." class="rounded me-2" alt="...">
+      <strong class="me-auto">Bootstrap</strong>
+      <small>11 mins ago</small>
+      <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+    <div class="toast-body">
+      Hello, world! This is a toast message.
+    </div>
+  </div>
+</div>
 </body>
 </html>

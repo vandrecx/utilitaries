@@ -56,7 +56,7 @@ function hideEmail(){
                     <div class="alert alert-danger" role="alert">
                         Senha incorreta!
                     </div>
-                <?php }else if(isset($_GET['validation']) && $_GET['validation'] == '2'){ ?>
+                <?php }else if(isset($_GET['validation']) && $_GET['validation'] && isset($_SESSION['pass_repair']) == '2'){ ?>
                     <br>
                     <div class="alert alert-success" role="alert">
                         <h4 class="alert-heading">Senha alterada com sucesso!</h4>
