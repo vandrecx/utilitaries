@@ -21,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') { // POST METHOD
     
             if ($user) { // VERIFICA O USUÁRIO
             
-                if ($password == $user['s_password_user']) { // VERIFICA SENHA // ps: password_verify() só verifica senhas previamente criadas por password_hash()
+                if (password_verify($password, $user['s_password_user'])) { // VERIFICA SENHA
 
                         $_SESSION['ID'] = $user['i_id_user'];
                         $_SESSION['Email'] = $user['s_email_user'];

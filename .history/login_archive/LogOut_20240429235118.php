@@ -1,6 +1,5 @@
 <?php
 
-// ENCERRA SESSÃO
 session_start();
 
 $_SESSION['ID'];

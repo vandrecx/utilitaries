@@ -42,7 +42,7 @@ function sendEmail($send_to, $user_name, $new_pass,){
 
 if($_SERVER['REQUEST_METHOD'] === 'POST'){
 
-    $email = sanitizeData('email', 'email'); // SANITIZA EMAIL
+    $email = sanitizeData($_POST['email'], 'email'); // SANITIZA EMAIL
 
     try{
 
@@ -52,7 +52,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 
         if ($check_email->rowCount()>0) { // CONFERE SE HÁ QUERIES CORRESPONDENTES
 
-            $result = $check_email->fetch(PDO::FETCH_ASSOC); // TRANSFORMA QUERY EM ARRRAY
+            $result = $stmt->fetch(PDO::FETCH_ASSOC); // TRANSFORMA QUERY EM ARRRAY
             $user_repair = $result['s_repair_user']; // ATRIBUI O E-MAIL DE REPARO A VARIAVEL $user_repair
             $user_name = $result['s_name_user']; // ATRIBUI O NOME DO USUÁRIO A VARIAVEL $user_name
 
