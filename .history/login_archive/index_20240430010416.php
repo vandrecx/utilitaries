@@ -3,7 +3,18 @@
 require_once 'Conn.php';
 include 'funcoes.php';
 
-hideEmail();
+function hideEmail(){
+
+    session_start();
+    
+    $email = $_SESSION['pass_repair'];
+    $encript_email = substr($email, 0, 5);
+    $result_email = $encript_email . str_repeat("*", strlen($email) - 5);
+
+    session_destroy();
+
+    return $result_email;
+}
 
 ?>
 
