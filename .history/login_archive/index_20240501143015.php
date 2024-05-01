@@ -33,10 +33,9 @@ include 'funcoes.php';
                     <a href="recupera_senha.php">Esqueceu a senha?</a>
                 </div>
                 <button type="submit" class="btn btn-primary" name="submit">Continue</button>
+                <p class="mb-3">Ainda não possui uma conta? </p>
+                <a href="recupera_senha.php">Cadastre-se</a>
             </form>
-                <br>
-                <a href="cadastro.php">Cadastre-se</a>
-
                 <?php if(isset($_GET['validation']) && $_GET['validation'] == '0'){ ?>
                     <br>
                     <div class="alert alert-danger" role="alert">

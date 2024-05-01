@@ -44,9 +44,9 @@ function updatePass($newpass, $email, $pdo){
 
     try{
 
-        $update = $pdo->prepare("UPDATE entidade SET s_password_entidade = :new_pass WHERE s_enterpriseemail_entidade = :s_enterpriseemail_entidade");
+        $update = $pdo->prepare("UPDATE entidade SET s_password_entidade = :new_pass WHERE s_email_entidade = :s_email_entidade");
         $update->bindParam(':new_pass', $newpass);
-        $update->bindParam(':s_enterpriseemail_entidade', $email);
+        $update->bindParam(':s_email_entidade', $email);
         $update->execute();
 
     } catch(PDOException $err) {

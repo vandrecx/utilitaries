@@ -34,9 +34,10 @@ include 'funcoes.php';
                 </div>
                 <button type="submit" class="btn btn-primary" name="submit">Continue</button>
             </form>
-                <br>
-                <a href="cadastro.php">Cadastre-se</a>
-
+                <div class="modal-body">
+                    <p>Modal body text goes here.</p>
+                </div>
+                <a href="recupera_senha.php">Cadastre-se</a>
                 <?php if(isset($_GET['validation']) && $_GET['validation'] == '0'){ ?>
                     <br>
                     <div class="alert alert-danger" role="alert">

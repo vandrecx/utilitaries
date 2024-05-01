@@ -34,9 +34,8 @@ include 'funcoes.php';
                 </div>
                 <button type="submit" class="btn btn-primary" name="submit">Continue</button>
             </form>
-                <br>
-                <a href="cadastro.php">Cadastre-se</a>
-
+                <div id="emailHelp" class="form-text">Ainda não tem uma conta? </div>
+                <a href="recupera_senha.php">Cadastre-se</a>
                 <?php if(isset($_GET['validation']) && $_GET['validation'] == '0'){ ?>
                     <br>
                     <div class="alert alert-danger" role="alert">

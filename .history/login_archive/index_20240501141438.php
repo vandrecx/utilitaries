@@ -34,9 +34,6 @@ include 'funcoes.php';
                 </div>
                 <button type="submit" class="btn btn-primary" name="submit">Continue</button>
             </form>
-                <br>
-                <a href="cadastro.php">Cadastre-se</a>
-
                 <?php if(isset($_GET['validation']) && $_GET['validation'] == '0'){ ?>
                     <br>
                     <div class="alert alert-danger" role="alert">
@@ -52,7 +49,7 @@ include 'funcoes.php';
                     <div class="alert alert-success" role="alert">
                         <h4 class="alert-heading">Senha alterada com sucesso!</h4>
                         <hr>
-                        <p class="mb-0">Uma nova senha foi enviada para o e-mail <strong><?php echo hideEmail(); ?></strong></p>
+                        <p class="mb-0">Uma nova senha foi enviada para o e-mail <strong><?php //echo hideEmail(); ?></strong></p>
                     </div>
                 <?php } ?>
         </div>

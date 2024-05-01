@@ -35,7 +35,7 @@ include 'funcoes.php';
                 <button type="submit" class="btn btn-primary" name="submit">Continue</button>
             </form>
                 <br>
-                <a href="cadastro.php">Cadastre-se</a>
+                <a href="">Cadastre-se</a>
 
                 <?php if(isset($_GET['validation']) && $_GET['validation'] == '0'){ ?>
                     <br>
