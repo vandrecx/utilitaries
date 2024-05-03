@@ -46,15 +46,15 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 
     try{
 
-        $check_email = $pdo->prepare("SELECT empresa.s_name_empresa, s_email_entidade, s_repairemail_entidade FROM entidade INNER JOIN empresa WHERE empresa.i_id_empresa = entidade.fk_enterprise_entidade AND s_email_entidade = :email");
+        $check_email = $pdo->prepare("SELECT s_name_entidade, s_email_entidade, s_repairemail_entidade FROM entidade WHERE s_email_entidade = :email");
         $check_email->bindParam(':email', $email);  // ATRIBUI $email AO :s_email_user SEM UTILIZAR A VARÍAVEL NO SQL PREVININDO ATAQUES
         $check_email->execute(); // EXECUTA A QUERY
 
         if ($check_email->rowCount()>0) { // CONFERE SE HÁ QUERIES CORRESPONDENTES
 
             $result = $check_email->fetch(PDO::FETCH_ASSOC); // TRANSFORMA QUERY EM ARRRAY
-            $user_repair = $result['s_repairemail_entidade']; // ATRIBUI O E-MAIL DE REPARO A VARIAVEL $user_repair
-            $user_name = $result['s_name_empresa']; // ATRIBUI O NOME DO USUÁRIO A VARIAVEL $user_name
+            $user_repair = $result['s_email_entidade']; // ATRIBUI O E-MAIL DE REPARO A VARIAVEL $user_repair
+            $user_name = $result['s_name_entidade']; // ATRIBUI O NOME DO USUÁRIO A VARIAVEL $user_name
 
             $new_pass = generatePassword(); // ATRIBUI SENHA ALEATÓRIA
 

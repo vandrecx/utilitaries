@@ -117,17 +117,9 @@ function formataTelefoneFixo($numero){
 
 // FORMATAR NUMERO FLOAT
 function formataFloat($valor){
-    $padrao = '/^\d+(\.\d+)?$/';
+    $valor_formatado = number_format($valor, 2, ',', '.');
 
-    if (preg_match($padrao, $valor)) {
-        return $valor;
-    } else {
-        $valor_formatado = number_format($valor, 2, '.', ',');
-
-        return $valor_formatado;
-    }
-    
-    
+    return $valor_formatado;
 }
 
 function formataCNPJ($cnpj){

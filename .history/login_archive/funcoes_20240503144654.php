@@ -75,6 +75,7 @@ function hideEmail(){
 function formataNumero($numero){
 
     $padrao = '/^\(\d{2}\) \d{5}-\d{4}$/';
+
     sanitizeData($numero, 'text');
 
     if(preg_match($padrao, $numero)){
@@ -82,88 +83,48 @@ function formataNumero($numero){
         return $numero;
 
     }else{
-        $numero = preg_replace('/\D/', '', $numero);
-        if(strlen($numero)!=11){
-            header("Location: cadastro.php?validation=0"); // ERRO DE NUMERO INVALIDO
-            exit();
-        }else{
-            $numero_formatado = '(' . substr($numero, 0, 2) . ') ' . substr($numero, 2, 5) . '-' . substr($numero, 7);
-            return $numero_formatado;
-        }
-    }
-}
 
-
-// FORMATAR TELEFONE FIXO
-function formataTelefoneFixo($numero){
-
-    $padrao = '/^\(\d{2}\) [2-9]\d{3}-\d{4}$/';
-    sanitizeData($numero, 'text');
-
-    if(preg_match($padrao, $numero)){
-        return $numero;
-    }else{
         $numero = preg_replace('/\D/', '', $numero);
 
         if(strlen($numero)!=10){
-            header("Location: cadastro.php?validation=0"); // ERRO DE NUMERO INVALIDO
+
+            header("Location: index.php?validation=0"); // ERRO DE NUMERO INVALIDO
             exit();
+
         }else{
-            $numero_formatado = '(' . substr($numero, 0, 2) . ') ' . substr($numero, 2, 4) . '-' . substr($numero, 6);
+
+            $numero_formatado = '(' . substr($numero, 0, 2) . ') ' . substr($numero, 2, 5) . '-' . substr($numero, 7);
+
             return $numero_formatado;
         }
     }
 }
 
-// FORMATAR NUMERO FLOAT
-function formataFloat($valor){
-    $padrao = '/^\d+(\.\d+)?$/';
+function formataTelefoneFixo($numero){
 
-    if (preg_match($padrao, $valor)) {
-        return $valor;
-    } else {
-        $valor_formatado = number_format($valor, 2, '.', ',');
+    $padrao = '/^\(\d{2}\) [2-9]\d{3}-\d{4}$/';
 
-        return $valor_formatado;
-    }
-    
-    
-}
+    sanitizeData($numero, 'text');
 
-function formataCNPJ($cnpj){
-    if (!preg_match('/^\d{2}\.\d{3}\.\d{3}\/\d{4}-\d{2}$/', $cnpj)) {
-        return false;
+    if(preg_match($padrao, $numero)){
+
+        return $numero;
+
     }else{
-        $cnpj = preg_replace('/\D/', '', $cnpj);
 
-        $cnpj_formatado = substr($cnpj, 0, 2) . '.' . substr($cnpj, 2, 3) . '.' . substr($cnpj, 5, 3) . '/' . substr($cnpj, 8, 4) . '-' . substr($cnpj, 12);
+        $numero = preg_replace('/\D/', '', $numero);
 
-        return $cnpj_formatado;
-    }
-    
-}
+        if(strlen($numero)!=10){
 
-// VALIDA CNPJ, VOU TIRAR POR ENQUANTO PRA TESTE
-function validaCNPJ($cnpj){
+            header("Location: cadastro.php?validation=0"); // ERRO DE NUMERO INVALIDO
+            exit();
 
-    sanitizeData($cnpj, 'text');
+        }else{
 
-    $url = "https://publica.cnpj.ws/cnpj/$cnpj";
-    $curl = curl_init($url);
-    curl_setopt($curl, CURLOPT_URL, $url);
-    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+            $numero_formatado = '(' . substr($numero, 0, 2) . ') ' . substr($numero, 2, 4) . '-' . substr($numero, 6);
 
-    curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
-    curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
-        
-    $resp = curl_exec($curl);
-    curl_close($curl);
-        
-    if(json_decode($resp, true)){
-        return $cnpj;
-    }else{
-        header("Location: cadastro.php?validation=1"); // CNPJ INVALIDO
-        exit();
+            return $numero_formatado;
+        }
     }
 }
 

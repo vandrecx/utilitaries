@@ -76,7 +76,7 @@ include 'funcoes.php';
                 <?php if(isset($_GET['validation']) && $_GET['validation'] == '0'){ ?>
                     <br>
                     <div class="alert alert-danger" role="alert">
-                        Número de telefone com quantidade de caracteres inválido.
+                        Número de telefone com quantidade de caracteres inválido
                     </div>
                 <?php } ?>
 

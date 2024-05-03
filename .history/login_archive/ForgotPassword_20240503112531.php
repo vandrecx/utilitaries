@@ -54,7 +54,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 
             $result = $check_email->fetch(PDO::FETCH_ASSOC); // TRANSFORMA QUERY EM ARRRAY
             $user_repair = $result['s_repairemail_entidade']; // ATRIBUI O E-MAIL DE REPARO A VARIAVEL $user_repair
-            $user_name = $result['s_name_empresa']; // ATRIBUI O NOME DO USUÁRIO A VARIAVEL $user_name
+            $user_name = $result['s_name_entidade']; // ATRIBUI O NOME DO USUÁRIO A VARIAVEL $user_name
 
             $new_pass = generatePassword(); // ATRIBUI SENHA ALEATÓRIA
 

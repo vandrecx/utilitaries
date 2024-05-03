@@ -71,15 +71,6 @@ include 'funcoes.php';
                     </div>
                     <button type="submit" class="btn btn-primary" name="submit">Continue</button>
                 </form>
-                <br>
-
-                <?php if(isset($_GET['validation']) && $_GET['validation'] == '0'){ ?>
-                    <br>
-                    <div class="alert alert-danger" role="alert">
-                        Número de telefone com quantidade de caracteres inválido.
-                    </div>
-                <?php } ?>
-
             </div>
         </div>
     </div>

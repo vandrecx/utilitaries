@@ -75,6 +75,7 @@ function hideEmail(){
 function formataNumero($numero){
 
     $padrao = '/^\(\d{2}\) \d{5}-\d{4}$/';
+
     sanitizeData($numero, 'text');
 
     if(preg_match($padrao, $numero)){
@@ -82,12 +83,18 @@ function formataNumero($numero){
         return $numero;
 
     }else{
+
         $numero = preg_replace('/\D/', '', $numero);
+
         if(strlen($numero)!=11){
+
             header("Location: cadastro.php?validation=0"); // ERRO DE NUMERO INVALIDO
             exit();
+
         }else{
+
             $numero_formatado = '(' . substr($numero, 0, 2) . ') ' . substr($numero, 2, 5) . '-' . substr($numero, 7);
+
             return $numero_formatado;
         }
     }
@@ -98,18 +105,26 @@ function formataNumero($numero){
 function formataTelefoneFixo($numero){
 
     $padrao = '/^\(\d{2}\) [2-9]\d{3}-\d{4}$/';
+
     sanitizeData($numero, 'text');
 
     if(preg_match($padrao, $numero)){
+
         return $numero;
+
     }else{
+
         $numero = preg_replace('/\D/', '', $numero);
 
         if(strlen($numero)!=10){
+
             header("Location: cadastro.php?validation=0"); // ERRO DE NUMERO INVALIDO
             exit();
+
         }else{
+
             $numero_formatado = '(' . substr($numero, 0, 2) . ') ' . substr($numero, 2, 4) . '-' . substr($numero, 6);
+
             return $numero_formatado;
         }
     }
@@ -117,37 +132,12 @@ function formataTelefoneFixo($numero){
 
 // FORMATAR NUMERO FLOAT
 function formataFloat($valor){
-    $padrao = '/^\d+(\.\d+)?$/';
+    $valor_formatado = number_format($valor, 2, ',', '.');
 
-    if (preg_match($padrao, $valor)) {
-        return $valor;
-    } else {
-        $valor_formatado = number_format($valor, 2, '.', ',');
-
-        return $valor_formatado;
-    }
-    
-    
+    return $valor_formatado;
 }
 
-function formataCNPJ($cnpj){
-    if (!preg_match('/^\d{2}\.\d{3}\.\d{3}\/\d{4}-\d{2}$/', $cnpj)) {
-        return false;
-    }else{
-        $cnpj = preg_replace('/\D/', '', $cnpj);
-
-        $cnpj_formatado = substr($cnpj, 0, 2) . '.' . substr($cnpj, 2, 3) . '.' . substr($cnpj, 5, 3) . '/' . substr($cnpj, 8, 4) . '-' . substr($cnpj, 12);
-
-        return $cnpj_formatado;
-    }
-    
-}
-
-// VALIDA CNPJ, VOU TIRAR POR ENQUANTO PRA TESTE
 function validaCNPJ($cnpj){
-
-    sanitizeData($cnpj, 'text');
-
     $url = "https://publica.cnpj.ws/cnpj/$cnpj";
     $curl = curl_init($url);
     curl_setopt($curl, CURLOPT_URL, $url);

@@ -117,30 +117,17 @@ function formataTelefoneFixo($numero){
 
 // FORMATAR NUMERO FLOAT
 function formataFloat($valor){
-    $padrao = '/^\d+(\.\d+)?$/';
+    $valor_formatado = number_format($valor, 2, ',', '.');
 
-    if (preg_match($padrao, $valor)) {
-        return $valor;
-    } else {
-        $valor_formatado = number_format($valor, 2, '.', ',');
-
-        return $valor_formatado;
-    }
-    
-    
+    return $valor_formatado;
 }
 
 function formataCNPJ($cnpj){
-    if (!preg_match('/^\d{2}\.\d{3}\.\d{3}\/\d{4}-\d{2}$/', $cnpj)) {
-        return false;
-    }else{
-        $cnpj = preg_replace('/\D/', '', $cnpj);
+    $cnpj = preg_replace('/\D/', '', $cnpj);
 
-        $cnpj_formatado = substr($cnpj, 0, 2) . '.' . substr($cnpj, 2, 3) . '.' . substr($cnpj, 5, 3) . '/' . substr($cnpj, 8, 4) . '-' . substr($cnpj, 12);
+    $cnpj_formatado = substr($cnpj, 0, 2) . '.' . substr($cnpj, 2, 3) . '.' . substr($cnpj, 5, 3) . '/' . substr($cnpj, 8, 4) . '-' . substr($cnpj, 12);
 
-        return $cnpj_formatado;
-    }
-    
+    return $cnpj_formatado;
 }
 
 // VALIDA CNPJ, VOU TIRAR POR ENQUANTO PRA TESTE

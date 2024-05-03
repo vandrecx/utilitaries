@@ -13,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') { // POST METHOD
 
         try{
 
-            $sql = $pdo->prepare("SELECT i_id_entidade, empresa.s_name_empresa, s_email_entidade, s_password_entidade FROM sistema WHERE s_email_entidade = :s_email_entidadeSELECT i_id_entidade, empresa.s_name_empresa, s_email_entidade, s_password_entidade FROM entidade INNER JOIN empresa WHERE empresa.i_id_empresa = entidade.fk_enterprise_entidade AND s_email_entidade = :s_email_entidade"); // Prepara o statement para escapar os dados para execução
+            $sql = $pdo->prepare("SELECT i_id_entidade, s_name_entidade, s_email_entidade, s_password_entidade FROM sistema WHERE s_email_entidade = :s_email_entidade"); // Prepara o statement para escapar os dados para execução
             $sql->bindParam(':s_email_entidade', $email); // ATRIBUI $email AO :s_enterpriseemail_entidade SEM UTILIZAR A VARÍAVEL NO SQL PREVININDO ATAQUES
             $sql->execute(); // EXECUTA A QUERY
 

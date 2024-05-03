@@ -25,19 +25,19 @@ include 'funcoes.php';
                 <form method="POST" action="UserSignUp.php">
                     <div class="input-group mb-3">
                         <span class="input-group-text" id="inputGroup-sizing-default">Nome da Empresa *</span>
-                        <input type="text" name="nome-empresa" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required>
+                        <input type="text" name="nome-empresa" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
                     </div>
                     <div class="input-group mb-3">
                         <span class="input-group-text" id="inputGroup-sizing-default">E-mail da Empresa *</span>
-                        <input type="text" name="email-empresa" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required>
+                        <input type="text" name="email-empresa" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
                     </div>
                     <div class="input-group mb-3">
                         <span class="input-group-text" id="inputGroup-sizing-default">CNPJ *</span>
-                        <input type="text" name="cnpj" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required>
+                        <input type="text" name="cnpj" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
                     </div>
                     <div class="input-group mb-3">
                         <span class="input-group-text" id="inputGroup-sizing-default">Telefone *</span>
-                        <input type="text" name="telefone-empresa" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required>
+                        <input type="text" name="telefone-empresa" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
                         <span class="input-group-text" id="inputGroup-sizing-default">Website</span>
                         <input type="text" name="website-empresa" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
                     </div>
@@ -62,7 +62,7 @@ include 'funcoes.php';
                         <span class="input-group-text" id="inputGroup-sizing-default">Despesas</span>
                         <input type="text" name="despesas-empresa" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
                         <span class="input-group-text" id="inputGroup-sizing-default">Categoria *</span>
-                        <select class="form-select form-select-sm" name="select-empresa" aria-label="Large select example" required>
+                        <select class="form-select form-select-sm" name="nome-empresa" aria-label="Large select example">
                             <option selected>Categoria da sua empresa</option>
                             <option value="ps">Prestação de Serviços</option>
                             <option value="industria">Indústria</option>
@@ -71,15 +71,6 @@ include 'funcoes.php';
                     </div>
                     <button type="submit" class="btn btn-primary" name="submit">Continue</button>
                 </form>
-                <br>
-
-                <?php if(isset($_GET['validation']) && $_GET['validation'] == '0'){ ?>
-                    <br>
-                    <div class="alert alert-danger" role="alert">
-                        Número de telefone com quantidade de caracteres inválido.
-                    </div>
-                <?php } ?>
-
             </div>
         </div>
     </div>
