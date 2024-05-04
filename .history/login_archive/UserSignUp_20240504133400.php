@@ -17,9 +17,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $banco = htmlspecialchars($_POST['banco-empresa']);
         $conta = htmlspecialchars($_POST['conta-empresa']);;
         $agencia = htmlspecialchars($_POST['agencia-empresa']);;
-        $faturamento = formataFloat($_POST['faturamento-empresa']);
-        $lucro = formataFloat($_POST['lucro-empresa']);
-        $despesas = formataFloat($_POST['despesas-empresa']);
+        $faturamento = sanitizeData(formataFloat($_POST['faturamento-empresa']), 'float');
+        $lucro = sanitizeData(formataFloat($_POST['lucro-empresa']), 'float');
+        $despesas = sanitizeData(formataFloat($_POST['despesas-empresa']), 'float');
         $categoria = isset($_POST['select-empresa']) ? htmlspecialchars($_POST['select-empresa']) : '';
         
         try{

@@ -132,7 +132,6 @@ function formataFloat($post_name){
     
 }
 
-//FORMATA CNPJ
 function formataCNPJ($cnpj){
 
     if (!preg_match('/^\d{2}\.\d{3}\.\d{3}\/\d{4}-\d{2}$/', $cnpj)) {
@@ -172,7 +171,6 @@ function validaCNPJ($cnpj){
     }
 }
 
-// VALIDA CEP
 function validaCEP($cep){
     $url = "https://viacep.com.br/ws/" . $cep . "/json/";
     $curl = curl_init($url);
@@ -186,17 +184,9 @@ function validaCEP($cep){
     curl_close($curl);
         
     if(json_decode($resp, true)){
-        $cep = preg_replace('/\D/', '', $cep);
-        
-        if (preg_match('/^\d{5}-\d{3}$/', $cep)) {
-            return $cep; 
-        } else {
-            $cep_formatado = substr($cep, 0, 5) . '-' . substr($cep, 5);
-            return $cep_formatado;
-        }
-        
+        return $cep;
     }else{
-        header("Location: endereco.php?validation=0"); // CNPJ INVALIDO
+        header("Location: endereco.php?validation=1"); // CNPJ INVALIDO
         exit();
     }
 }

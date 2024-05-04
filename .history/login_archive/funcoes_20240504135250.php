@@ -119,12 +119,12 @@ function formataTelefoneFixo($numero){
 function formataFloat($post_name){
     $padrao = '/^\d+(\.\d+)?$/';
 
-    $valor = htmlspecialchars($post_name);
+    $valor = sanitizeData($post_name, 'float');
 
     if (preg_match($padrao, $valor)) {
         return $valor;
     } else {
-        $valor_formatado = number_format($valor, 2, '.');
+        $valor_formatado = number_format($valor, 2, '.', ',');
 
         return $valor_formatado;
     }
@@ -132,20 +132,19 @@ function formataFloat($post_name){
     
 }
 
-//FORMATA CNPJ
 function formataCNPJ($cnpj){
+    sanitizeData($cnpj, 'text');
 
     if (!preg_match('/^\d{2}\.\d{3}\.\d{3}\/\d{4}-\d{2}$/', $cnpj)) {
-        $cnpj = filter_var($cnpj, FILTER_SANITIZE_SPECIAL_CHARS);
-
         $cnpj = preg_replace('/\D/', '', $cnpj);
 
         $cnpj_formatado = substr($cnpj, 0, 2) . '.' . substr($cnpj, 2, 3) . '.' . substr($cnpj, 5, 3) . '/' . substr($cnpj, 8, 4) . '-' . substr($cnpj, 12);
 
         return $cnpj_formatado;
-    } else {
+    }else{
         return $cnpj;
-    }
+    }   
+    
 }
 
 // VALIDA CNPJ, VOU TIRAR POR ENQUANTO PRA TESTE
@@ -168,35 +167,6 @@ function validaCNPJ($cnpj){
         return $cnpj;
     }else{
         header("Location: cadastro.php?validation=1"); // CNPJ INVALIDO
-        exit();
-    }
-}
-
-// VALIDA CEP
-function validaCEP($cep){
-    $url = "https://viacep.com.br/ws/" . $cep . "/json/";
-    $curl = curl_init($url);
-    curl_setopt($curl, CURLOPT_URL, $url);
-    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-
-    curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
-    curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
-        
-    $resp = curl_exec($curl);
-    curl_close($curl);
-        
-    if(json_decode($resp, true)){
-        $cep = preg_replace('/\D/', '', $cep);
-        
-        if (preg_match('/^\d{5}-\d{3}$/', $cep)) {
-            return $cep; 
-        } else {
-            $cep_formatado = substr($cep, 0, 5) . '-' . substr($cep, 5);
-            return $cep_formatado;
-        }
-        
-    }else{
-        header("Location: endereco.php?validation=0"); // CNPJ INVALIDO
         exit();
     }
 }

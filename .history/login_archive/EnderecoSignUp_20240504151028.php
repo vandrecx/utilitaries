@@ -9,21 +9,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if(isset($_POST['submit'])){
 
-        $nome_empresa = sanitizeData('nome-empresa', 'text');
-        $email_empresa = sanitizeData('email-empresa', 'email');
-        $tel_empresa = formataTelefoneFixo('telefone-empresa');
-        $website = sanitizeData('website-empresa', 'url');
-        $cnpj = formataCNPJ($_POST['cnpj']);
-        $banco = htmlspecialchars($_POST['banco-empresa']);
-        $conta = htmlspecialchars($_POST['conta-empresa']);;
-        $agencia = htmlspecialchars($_POST['agencia-empresa']);;
-        $faturamento = formataFloat($_POST['faturamento-empresa']);
-        $lucro = formataFloat($_POST['lucro-empresa']);
-        $despesas = formataFloat($_POST['despesas-empresa']);
-        $categoria = isset($_POST['select-empresa']) ? htmlspecialchars($_POST['select-empresa']) : '';
+        $cep_empresa = sanitizeData('cep-empresa', 'text'); // VALIDAR 
+        $estado_empresa = sanitizeData('estado-empresa', 'text');
+        $cidade_empresa = sanitizeData('cidade-empresa', 'text');
+        $bairro_empresa = sanitizeData('bairro-empresa', 'text');
+        $rua_empresa = sanitizeData('rua-empresa', 'text');
+        $residencia_empresa = sanitizeData('residencia-empresa', 'text');
+        $complemento_empresa = sanitizeData('complemento-empresa', 'text');
         
         try{
-            $sql = $pdo->prepare("INSERT INTO empresa (s_name_empresa, 
+            $sql = $pdo->prepare("INSERT INTO enderecos (s_name_empresa, 
                                             s_email_empresa, 
                                             s_tel_empresa, 
                                             s_website_empresa, 
